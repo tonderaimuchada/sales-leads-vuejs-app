@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import AppVue from ''
-import LeadCreate from '/views'
+import LeadCreate from '/views/LeadCreate.vue'
+import LeadUpdate from '/views/LeadUpdate.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,11 @@ const router = createRouter({
             path: '/leads/create',
             name: 'leadCreate',
             component: LeadCreate
+        },
+        {
+            path: '/leads/:id/update',
+            name: 'leadUpdate',
+            component: LeadUpdate
         }
     ]
 })
