@@ -36,9 +36,11 @@
                             <td>{{ lead.address }}</td>
                             <td>{{ lead.dateCreated }}</td>
                             <td>
-                                <RouterLink :to="{ path: '/leads/' + lead.id + '/edit' }" class="btn btn-success float-end">
+                                <RouterLink :to="{ path: '/leads/' + lead.id + '/edit' }"
+                                    class="btn btn-success float-end">
                                     Edit</RouterLink>
-                                <button type="button" class="btn btn-danger float-end">Delete</button>
+                                <button type="button" @click="deleteLead(lead.id)"
+                                    class="btn btn-danger float-end">Delete</button>
                             </td>
                         </tr>
                     </tbody>
@@ -76,7 +78,21 @@ export default {
             axios.get('http://localhost:8000/api/lead').then(res => {
                 leads = res.data.leads;
             });
+        },
+        deleteLead(leadId) {
+            if (confirm('Proceed with deleting lead?')) {
+                axios.delete(`http://${leadId}/delete`).then(res => {
+                    alert(res.data.message);
+                    this.getLeads();
+                }
+                )
+                    .catch(function (error) {
+                        if (error.response && error.response.status == 404){
+                    alert(error.response.data.message)
+                }
+            });
         }
     }
+}
 }
 </script>

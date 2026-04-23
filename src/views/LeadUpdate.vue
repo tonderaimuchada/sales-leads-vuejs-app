@@ -62,7 +62,7 @@ export default {
                 this.model.lead = res.data.lead
             })
             .catch(function (error) {
-                if (error.response && error.response.status = 404){
+                if (error.response && error.response.status == 404){
                     alert('No lead ID found')
                 }
             });
