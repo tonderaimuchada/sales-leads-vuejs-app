@@ -34,11 +34,12 @@
                             <td>{{ lead.email }}</td>
                             <td>{{ lead.phoneNumber }}</td>
                             <td>{{ lead.address }}</td>
-                            <td>{{ lead.dateCreated }}</td>                            
+                            <td>{{ lead.dateCreated }}</td>
                             <td>
-                                <RouterLink to="/" class="btn btn-success float-end">Edit</RouterLink>
+                                <RouterLink :to="{ path: '/leads/' + lead.id + '/edit' }" class="btn btn-success float-end">
+                                    Edit</RouterLink>
                                 <button type="button" class="btn btn-danger float-end">Delete</button>
-                            </td>                            
+                            </td>
                         </tr>
                     </tbody>
                     <tbody v-else>
@@ -55,7 +56,7 @@
 <script>
 import axios from 'axios';
 
-function createLead(){
+function createLead() {
     console.log('in create')
 }
 
@@ -66,8 +67,8 @@ export default {
             leads: []
         }
     },
-    mounted(){
-        this.getLeads();        
+    mounted() {
+        this.getLeads();
     },
     methods: {
         getLeads() {
