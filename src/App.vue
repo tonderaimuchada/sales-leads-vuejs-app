@@ -4,9 +4,9 @@
             <div class="card-header">
                 <h4>
                     Leads
-                    <RouteLink to="/lead/create" class="btn btn-primary float-end">
+                    <RouterLink to="/leads/create" class="btn btn-primary float-end">
                         Add Lead
-                    </RouteLink>
+                    </RouterLink>
                 </h4>
             </div>
             <div class="card-body">
@@ -55,6 +55,10 @@
 <script>
 import axios from 'axios';
 
+function createLead(){
+    console.log('in create')
+}
+
 export default {
     name: 'leads',
     data() {
@@ -63,8 +67,7 @@ export default {
         }
     },
     mounted(){
-        this.getLeads();
-        
+        this.getLeads();        
     },
     methods: {
         getLeads() {
